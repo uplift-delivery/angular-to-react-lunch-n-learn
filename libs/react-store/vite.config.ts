@@ -54,7 +54,7 @@ export default defineConfig({
     },
     environment: 'jsdom',
     include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-
+    setupFiles: ['testing/test-setup.ts'],
     reporters: ['default'],
     coverage: {
       reportsDirectory: '../../coverage/libs/store',

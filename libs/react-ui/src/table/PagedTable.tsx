@@ -44,7 +44,8 @@ export const PagedTable: FC<CustomTableProps> = ({
               <ColumnFlexbox flex={1} />
               <ButtonGroup>
                 <IconButton
-                  disabled={pageNumber <= 0 || isLoading}
+                  disabled={pageNumber <= 1 || isLoading}
+                  aria-label={'previous'}
                   onClick={onPreviousPage}
                 >
                   <ChevronLeft />
@@ -52,7 +53,11 @@ export const PagedTable: FC<CustomTableProps> = ({
                 <Button variant={'text'} disabled>
                   {pageNumber}
                 </Button>
-                <IconButton disabled={isLoading} onClick={onNextPage}>
+                <IconButton
+                  disabled={isLoading}
+                  onClick={onNextPage}
+                  aria-label={'next'}
+                >
                   <ChevronRight />
                 </IconButton>
               </ButtonGroup>

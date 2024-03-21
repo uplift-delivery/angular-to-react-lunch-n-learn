@@ -16,10 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@uplift-lunch-n-learn/models": ["libs/models/src/index.ts"],
+      "@uplift-lunch-n-learn/models/testing": ["libs/models/testing/index.ts"],
       "@uplift-lunch-n-learn/react-native-ui": [
         "libs/react-native-ui/src/index.ts"
       ],
       "@uplift-lunch-n-learn/react-store": ["libs/react-store/src/index.ts"],
+      "@uplift-lunch-n-learn/react-store/testing": ["libs/react-store/testing/index.ts"],
       "@uplift-lunch-n-learn/react-ui": ["libs/react-ui/src/index.ts"]
     }
   },

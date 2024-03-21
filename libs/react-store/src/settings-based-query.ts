@@ -1,6 +1,6 @@
 import { BaseQueryApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { ReactStoreState } from './create-react-store';
-import { SettingsModel } from './settings/settings-model';
+import { SettingsModel } from '@uplift-lunch-n-learn/models';
 import { SettingsActions } from './settings/settings-slice';
 
 export const settingsBasedQuery: ReturnType<typeof fetchBaseQuery> = async (
