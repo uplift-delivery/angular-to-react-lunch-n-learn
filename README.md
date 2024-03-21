@@ -1,2 +1,11 @@
-# angular-to-react-lunch-n-learn
-Lunch and learn to show diff/similarities in react and angular
+# Purpose
+
+This is the repo planned to be used for the lunch n' learn on React & ReactNative.
+
+# Getting Started
+
+## Environment Variables
+
+```bash
+export NO_FLIPPER=1;
+```

@@ -1,0 +1,8 @@
+{
+  "name": "presenter-native",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/presenter-native/src",
+  "projectType": "application",
+  "targets": {},
+  "tags": []
+}

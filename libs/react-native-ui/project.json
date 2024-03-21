@@ -1,0 +1,8 @@
+{
+  "name": "react-native-ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/react-native-ui/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
