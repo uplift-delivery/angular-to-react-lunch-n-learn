@@ -21,7 +21,9 @@
         "libs/react-native-ui/src/index.ts"
       ],
       "@uplift-lunch-n-learn/react-store": ["libs/react-store/src/index.ts"],
-      "@uplift-lunch-n-learn/react-store/testing": ["libs/react-store/testing/index.ts"],
+      "@uplift-lunch-n-learn/react-store/testing": [
+        "libs/react-store/testing/index.ts"
+      ],
       "@uplift-lunch-n-learn/react-ui": ["libs/react-ui/src/index.ts"]
     }
   },
