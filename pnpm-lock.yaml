@@ -23,6 +23,9 @@ dependencies:
   '@angular/material':
     specifier: ^17.3.0
     version: 17.3.0(@angular/animations@17.2.4)(@angular/cdk@17.3.0)(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/forms@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
+  '@angular/material-moment-adapter':
+    specifier: ^17.3.1
+    version: 17.3.1(@angular/core@17.2.4)(@angular/material@17.3.0)(moment@2.30.1)
   '@angular/platform-browser':
     specifier: ~17.2.0
     version: 17.2.4(@angular/animations@17.2.4)(@angular/common@17.2.4)(@angular/core@17.2.4)
@@ -52,7 +55,16 @@ dependencies:
     version: 5.15.13(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@types/react@18.2.64)(react-dom@18.2.0)(react@18.2.0)
   '@mui/x-date-pickers':
     specifier: ^6.19.7
-    version: 6.19.7(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.13)(@mui/system@5.15.13)(@types/react@18.2.64)(date-fns@3.6.0)(react-dom@18.2.0)(react@18.2.0)
+    version: 6.19.7(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.13)(@mui/system@5.15.13)(@types/react@18.2.64)(date-fns@3.6.0)(moment@2.30.1)(react-dom@18.2.0)(react@18.2.0)
+  '@ngrx/effects':
+    specifier: ^17.1.1
+    version: 17.1.1(@angular/core@17.2.4)(@ngrx/store@17.1.1)(rxjs@7.8.1)
+  '@ngrx/entity':
+    specifier: ^17.1.1
+    version: 17.1.1(@angular/core@17.2.4)(@ngrx/store@17.1.1)(rxjs@7.8.1)
+  '@ngrx/store':
+    specifier: ^17.1.1
+    version: 17.1.1(@angular/core@17.2.4)(rxjs@7.8.1)
   '@react-navigation/native':
     specifier: ^6.1.17
     version: 6.1.17(react-native@0.73.6)(react@18.2.0)
@@ -827,6 +839,19 @@ packages:
     resolution: {integrity: sha512-4F32tJtl9Z8QKe1djkPRj/WY45NKv1bn9aL9Bi9z3T5ZkBCVsdnnXcm4hXnD9gXgWL5RozV2NTbuhGlGx5R0Pg==}
     engines: {node: ^18.13.0 || >=20.9.0}
     dev: true
+
+  /@angular/material-moment-adapter@17.3.1(@angular/core@17.2.4)(@angular/material@17.3.0)(moment@2.30.1):
+    resolution: {integrity: sha512-42NyZgw+IkMwt995mVuUNbYR+DFjZYYZVdAeDPVVyaxqdXp6HXAfkW6knoH2dP8S0RbBaE+mwgjI34WPRce0tQ==}
+    peerDependencies:
+      '@angular/core': ^17.0.0 || ^18.0.0
+      '@angular/material': 17.3.1
+      moment: ^2.18.1
+    dependencies:
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      '@angular/material': 17.3.0(@angular/animations@17.2.4)(@angular/cdk@17.3.0)(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/forms@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
+      moment: 2.30.1
+      tslib: 2.6.2
+    dev: false
 
   /@angular/material@17.3.0(@angular/animations@17.2.4)(@angular/cdk@17.3.0)(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/forms@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1):
     resolution: {integrity: sha512-e9X/Gu4mVW9CZ83Hdlq2VUemPsoBbZcmsWKJ2FBl3E0v4puZK45OuUSx1VZl3Ct+CmVRlI6SJSWV1bFjRH8G3A==}
@@ -5520,7 +5545,7 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /@mui/x-date-pickers@6.19.7(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.13)(@mui/system@5.15.13)(@types/react@18.2.64)(date-fns@3.6.0)(react-dom@18.2.0)(react@18.2.0):
+  /@mui/x-date-pickers@6.19.7(@emotion/react@11.11.4)(@emotion/styled@11.11.0)(@mui/material@5.15.13)(@mui/system@5.15.13)(@types/react@18.2.64)(date-fns@3.6.0)(moment@2.30.1)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-BCTOQjAuyU29Ymd2FJrHHdRh0U6Qve7MsthdrD2jjaMaR8ou455JuxsNTQUGSpiMkGHWOMVq+B8N1EBcSYH63g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -5567,12 +5592,60 @@ packages:
       '@types/react-transition-group': 4.4.10
       clsx: 2.1.0
       date-fns: 3.6.0
+      moment: 2.30.1
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@ngrx/effects@17.1.1(@angular/core@17.2.4)(@ngrx/store@17.1.1)(rxjs@7.8.1):
+    resolution: {integrity: sha512-VDNVI70wfEwqoNliffAiMhsPry0CWKkifCLmfzr+SZEEdAaPEBr4FtRrrdcdq/ovmkcgoWukkH2MBljbCyHwtA==}
+    peerDependencies:
+      '@angular/core': ^17.0.0
+      '@ngrx/store': 17.1.1
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      '@ngrx/operators': 17.0.0-beta.0(rxjs@7.8.1)
+      '@ngrx/store': 17.1.1(@angular/core@17.2.4)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+
+  /@ngrx/entity@17.1.1(@angular/core@17.2.4)(@ngrx/store@17.1.1)(rxjs@7.8.1):
+    resolution: {integrity: sha512-MNjJY2K0Ci6RS64AEEy4P8nYWVP8EQnt5/Rjy4IQ8IAjw2zFlDSiOJA5xmFcWTk9v0m8x9YZ/7clVGA4Es69kA==}
+    peerDependencies:
+      '@angular/core': ^17.0.0
+      '@ngrx/store': 17.1.1
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      '@ngrx/store': 17.1.1(@angular/core@17.2.4)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+
+  /@ngrx/operators@17.0.0-beta.0(rxjs@7.8.1):
+    resolution: {integrity: sha512-EbO8AONuQ6zo2v/mPyBOi4y0CTAp1x4Z+bx7ZF+Pd8BL5ma53BTCL1TmzaeK5zPUe0yApudLk9/ZbHXPnVox5A==}
+    peerDependencies:
+      rxjs: ^6.5.3 || ^7.4.0
+    dependencies:
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+
+  /@ngrx/store@17.1.1(@angular/core@17.2.4)(rxjs@7.8.1):
+    resolution: {integrity: sha512-MGbKLTcl4uq2Uzx+qbMYNy6xW+JnkpRiznaGFX2/NFflq/zNZsjbxZrvn4/Z6ClVYIjj3uadjM1fupwMYMJxVA==}
+    peerDependencies:
+      '@angular/core': ^17.0.0
+      rxjs: ^6.5.3 || ^7.5.0
+    dependencies:
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      rxjs: 7.8.1
+      tslib: 2.6.2
     dev: false
 
   /@ngtools/webpack@17.2.3(@angular/compiler-cli@17.2.4)(typescript@5.3.3)(webpack@5.90.1):
@@ -15432,6 +15505,10 @@ packages:
       pkg-types: 1.0.3
       ufo: 1.4.0
     dev: true
+
+  /moment@2.30.1:
+    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
+    dev: false
 
   /mrmime@2.0.0:
     resolution: {integrity: sha512-eu38+hdgojoyq63s+yTpN4XMBdt5l8HhMhc4VKLO9KM5caLIBvUm4thi7fFaxyTmCKeNnXZ5pAlBwCUnhA09uw==}
