@@ -20,7 +20,7 @@
     "e2e:react:watch": "pnpm e2e:react --watch",
     "e2e": "concurrently --kill-others --success \"first\" \"pnpm start:app\" \"pnpm wait:app && pnpm e2e:react\"",
     "update-nx": "nx migrate latest",
-    "verify": "pnpm build && pnpm e2e",
+    "verify": "nx run-many --all --skip-nx-cache -t lint build test && pnpm e2e",
     "verify:affected": "nx affected -t lint build test && pnpm e2e"
   },
   "devDependencies": {

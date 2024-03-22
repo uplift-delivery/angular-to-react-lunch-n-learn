@@ -37,5 +37,5 @@ jobs:
       - uses: nrwl/nx-set-shas@v3
 
       - name: Verify Code
-        run: pnpm verify:affected
+        run: pnpm verify
 
