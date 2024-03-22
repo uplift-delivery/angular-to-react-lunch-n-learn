@@ -2,7 +2,9 @@
   "name": "@uplift-lunch-n-learn/models",
   "version": "0.0.1",
   "dependencies": {
-    "@faker-js/faker": "^8.4.1"
+    "@faker-js/faker": "^8.4.1",
+    "date-fns": "^3.6.0",
+    "zod": "^3.22.4"
   },
   "main": "./index.js",
   "module": "./index.mjs",

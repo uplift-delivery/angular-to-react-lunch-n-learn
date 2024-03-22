@@ -1,0 +1,22 @@
+on: [push]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - uses: nrwl/nx-set-shas@v3
+
+      - name: Verify Code
+        run: pnpm verify:affected
+

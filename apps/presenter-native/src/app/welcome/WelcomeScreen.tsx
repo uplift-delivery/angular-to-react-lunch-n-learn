@@ -12,7 +12,9 @@ export const WelcomeScreen: FC<NativeStackScreenProps<RootStackParams>> = ({
   }, [navigation]);
   return (
     <SafeAreaView>
-      <Text variant={'headlineMedium'}>Welcome to our lunch n' learn!</Text>
+      <Text role={'heading'} variant={'headlineMedium'}>
+        Welcome to our lunch n' learn!
+      </Text>
 
       <Button onPress={goToEvents}>
         <Text variant={'labelMedium'}>Events</Text>
