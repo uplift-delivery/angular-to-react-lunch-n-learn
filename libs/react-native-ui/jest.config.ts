@@ -1,5 +1,4 @@
 module.exports = {
-  displayName: 'react-native-ui',
   preset: 'react-native',
   resolver: '@nx/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html', 'tsx', 'jsx'],
@@ -19,7 +18,7 @@ module.exports = {
     ),
   },
   transformIgnorePatterns: [
-    '../../node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
+    '../../node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation|@babel)',
   ],
   coverageDirectory: '../../coverage/libs/react-native-ui',
 };
