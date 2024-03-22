@@ -1,4 +1,4 @@
-import { FC, useCallback } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { TableCell, TableRow } from '@mui/material';
 import { EventModel } from '@uplift-lunch-n-learn/models';
 import {
@@ -6,6 +6,7 @@ import {
   TableEditControlsCell,
 } from '@uplift-lunch-n-learn/react-ui';
 import { AppRouting } from '../app-routing';
+import { format, parseISO } from 'date-fns';
 
 export type EventTableRowProps = {
   event: EventModel;
@@ -25,6 +26,11 @@ export const EventTableRow: FC<EventTableRowProps> = ({
     () => onDelete && onDelete(event),
     [event, onDelete]
   );
+  const formattedDate = useMemo(() => {
+    const date =
+      typeof event.date === 'string' ? parseISO(event.date) : event.date;
+    return format(date, 'MM/dd/yyyy');
+  }, [event]);
   return (
     <TableRow>
       <TableCell>
@@ -33,7 +39,7 @@ export const EventTableRow: FC<EventTableRowProps> = ({
         </LinkButton>
       </TableCell>
       <TableCell>{event.location}</TableCell>
-      <TableCell>{event.date}</TableCell>
+      <TableCell>{formattedDate}</TableCell>
       <TableEditControlsCell onEdit={handleEdit} onDelete={handleDelete} />
     </TableRow>
   );
