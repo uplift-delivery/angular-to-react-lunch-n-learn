@@ -30,8 +30,12 @@ export const DeleteEventDialog: FC<DeleteEventDialogProps> = ({
       return;
     }
 
-    await deleteMutation(event.id);
-    closeHandler();
+    try {
+      await deleteMutation(event.id).unwrap();
+      closeHandler();
+    } catch (error) {
+      console.error('failed to delete event', error);
+    }
   }, [event, deleteMutation, closeHandler]);
 
   return (

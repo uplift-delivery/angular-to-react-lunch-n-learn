@@ -38,7 +38,7 @@ export const EventsTable: FC<EventsTableProps> = ({
           onEdit={onEditEvent}
         />
       )),
-    [items]
+    [items, onEditEvent, onDeleteEvent]
   );
   return (
     <PagedTable

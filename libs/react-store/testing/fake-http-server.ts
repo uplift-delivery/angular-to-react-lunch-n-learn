@@ -9,21 +9,23 @@ import {
 import { ModelFactory } from '@uplift-lunch-n-learn/models/testing';
 import { EventModel, PagedResultModel } from '@uplift-lunch-n-learn/models';
 
+type HttpResponseResolverInfo = Parameters<HttpResponseResolver>[0];
 export type RequestOptions = Partial<{
   delay: DelayMode;
   status: number;
-  captureHttp?: (
-    info: Parameters<HttpResponseResolver>[0]
-  ) => unknown | Promise<unknown>;
+  captureHttp?: (info: HttpResponseResolverInfo) => unknown | Promise<unknown>;
 }>;
 
 const settings = ModelFactory.settings();
-const DEFAULT_HANDLERS = [
-  http.get('/settings.json', () => {
-    return HttpResponse.json(settings);
-  }),
-];
-const server = setupServer(...DEFAULT_HANDLERS);
+const server = setupServer();
+
+async function handleRequestOptions(
+  info: HttpResponseResolverInfo,
+  options?: RequestOptions
+) {
+  options?.captureHttp && (await options.captureHttp(info));
+  options?.delay && (await delay(options.delay));
+}
 
 function setupGetEvents(
   page: PagedResultModel<EventModel>,
@@ -31,8 +33,7 @@ function setupGetEvents(
 ) {
   server.use(
     http.get(`${settings.baseUrl}/events`, async (info) => {
-      options?.captureHttp && (await options.captureHttp(info));
-      options?.delay && (await delay(options.delay));
+      await handleRequestOptions(info, options);
 
       const status = options?.status ?? 200;
       return HttpResponse.json(page, { status });
@@ -43,8 +44,7 @@ function setupGetEvents(
 function setupCreateEvent(result: EventModel, options?: RequestOptions) {
   server.use(
     http.post(getFullApiUrl('/events'), async (info) => {
-      options?.captureHttp && (await options.captureHttp(info));
-      options?.delay && (await delay(options.delay));
+      await handleRequestOptions(info, options);
 
       const status = options?.status ?? 201;
       return HttpResponse.json(result, { status });
@@ -59,8 +59,7 @@ function setupGetEventById(
 ) {
   server.use(
     http.get(getFullApiUrl(`/events/${id}`), async (info) => {
-      options?.captureHttp && (await options.captureHttp(info));
-      options?.delay && (await delay(options.delay));
+      await handleRequestOptions(info, options);
 
       const status = options?.status ?? 200;
       return HttpResponse.json(result, { status });
@@ -71,8 +70,7 @@ function setupGetEventById(
 function setupUpdateEvent(id: string, options?: RequestOptions) {
   server.use(
     http.get(getFullApiUrl(`/events/${id}`), async (info) => {
-      options?.captureHttp && (await options.captureHttp(info));
-      options?.delay && (await delay(options.delay));
+      await handleRequestOptions(info, options);
 
       const status = options?.status ?? 204;
       return HttpResponse.text(null, { status });
@@ -86,7 +84,10 @@ function getFullApiUrl(path: string) {
 
 export const FakeHttpServer = {
   listen: () => server.listen({ onUnhandledRequest: 'error' }),
-  reset: () => server.resetHandlers(...DEFAULT_HANDLERS),
+  reset: () => {
+    server.resetHandlers();
+    server.use(http.get('/settings.json', () => HttpResponse.json(settings)));
+  },
   close: () => server.close(),
   setupGetEvents,
   setupCreateEvent,

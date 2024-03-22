@@ -9,7 +9,7 @@ import {
   FormDialogContent,
 } from '@uplift-lunch-n-learn/react-ui';
 import { EventModel } from '@uplift-lunch-n-learn/models';
-import { EventFields, useEventForm } from './EventSchema';
+import { EventFormFields, useEventForm } from './EventSchema';
 import { useUpdateEventMutation } from '@uplift-lunch-n-learn/react-store';
 
 export type EditEventDialogProps = Omit<
@@ -32,12 +32,16 @@ export const EditEventDialog: FC<EditEventDialogProps> = ({
     onClose && onClose({}, 'backdropClick');
   }, [reset, onClose]);
   const submitHandler = useCallback(
-    async (fields: EventFields) => {
+    async (fields: EventFormFields) => {
       if (!event) {
         return;
       }
-      await updateMutation({ ...event, ...fields });
-      closeHandler();
+      try {
+        await updateMutation({ ...event, ...fields }).unwrap();
+        closeHandler();
+      } catch (error) {
+        console.error('failed to save event', error);
+      }
     },
     [event, updateMutation, closeHandler]
   );

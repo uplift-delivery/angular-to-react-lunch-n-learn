@@ -8,7 +8,7 @@ import {
   FormDialogProps,
   SaveDialogActions,
 } from '@uplift-lunch-n-learn/react-ui';
-import { EventFields, useEventForm } from './EventSchema';
+import { EventFormFields, useEventForm } from './EventSchema';
 import { useCreateEventMutation } from '@uplift-lunch-n-learn/react-store';
 
 export type CreateEventDialogProps = Omit<
@@ -28,9 +28,13 @@ export const CreateEventDialog: FC<CreateEventDialogProps> = ({
     onClose && onClose({}, 'backdropClick');
   }, [reset, onClose]);
   const submitHandler = useCallback(
-    async (fields: EventFields) => {
-      await createMutation(fields);
-      closeHandler();
+    async (fields: EventFormFields) => {
+      try {
+        await createMutation(fields).unwrap();
+        closeHandler();
+      } catch (error) {
+        console.error('failed to save event', error);
+      }
     },
     [createMutation, closeHandler]
   );
