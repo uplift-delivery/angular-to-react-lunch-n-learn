@@ -32,7 +32,8 @@
     "date-fns": "*",
     "@hookform/resolvers": "*",
     "@faker-js/faker": "*",
-    "msw": "*"
+    "msw": "*",
+    "react-native-gesture-handler": "*"
   },
   "devDependencies": {}
 }

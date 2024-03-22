@@ -20,7 +20,7 @@
     "e2e:react:watch": "pnpm e2e:react --watch",
     "e2e": "concurrently --kill-others --success \"first\" \"pnpm start:app\" \"pnpm wait:app && pnpm e2e:react\"",
     "update-nx": "nx migrate latest",
-    "verify": "nx run-many --all --skip-nx-cache -t lint build test && pnpm e2e",
+    "verify": "nx run-many --all --skip-nx-cache -t sync-deps lint build test && pnpm e2e",
     "verify:affected": "nx affected -t lint build test && pnpm e2e"
   },
   "devDependencies": {
@@ -157,6 +157,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.51.1",
     "react-native": "0.73.6",
+    "react-native-gesture-handler": "^2.15.0",
     "react-native-paper": "^5.12.3",
     "react-native-safe-area-context": "^4.9.0",
     "react-native-screens": "^3.29.0",
