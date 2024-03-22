@@ -27,7 +27,6 @@ export class EventsFormComponent {
   @Input() onSubmitAction:
     | ((name: string, location: string, date: string) => void)
     | undefined;
-  @Input() onExitAction: (() => void) | undefined;
 
   fb = inject(FormBuilder);
   form = this.fb.group({

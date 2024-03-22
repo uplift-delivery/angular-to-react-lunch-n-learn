@@ -19,7 +19,7 @@ export class EventsService {
   createEvent(
     name: string,
     location: string,
-    date: string
+    date: Date | string
   ): Observable<EventModel> {
     return this.http.post<EventModel>(`${this.configUrl}/events`, {
       name,

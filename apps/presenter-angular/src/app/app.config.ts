@@ -8,6 +8,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { provideStore } from '@ngrx/store';
 import { eventsReducer } from './store/reducers/events.reducer';
+import { EventsEffects } from './store/effects/events.effects';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,5 +22,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     importProvidersFrom(MatDialogModule),
     provideStore({ events: eventsReducer }),
+    provideEffects([EventsEffects]),
   ],
 };
