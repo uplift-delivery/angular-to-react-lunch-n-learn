@@ -45,6 +45,7 @@ export const eventsApi = reactStoreApi.injectEndpoints({
         body: args,
         method: 'POST',
       }),
+      transformResponse: (result) => EventModelSchema.parseAsync(result),
     }),
     updateEvent: build.mutation<
       void,
