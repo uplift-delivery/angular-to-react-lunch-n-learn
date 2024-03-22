@@ -30,7 +30,10 @@
     "react-native-url-polyfill": "*",
     "zod": "*",
     "date-fns": "*",
-    "@hookform/resolvers": "*"
+    "@hookform/resolvers": "*",
+    "@faker-js/faker": "*",
+    "msw": "*",
+    "react-native-gesture-handler": "*"
   },
   "devDependencies": {}
 }

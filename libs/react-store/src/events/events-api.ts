@@ -8,7 +8,6 @@ import {
   EventModelSchema,
 } from '@uplift-lunch-n-learn/models';
 import { EventTag } from '../api-tags';
-import { format, parseISO } from 'date-fns';
 
 export const eventsApi = reactStoreApi.injectEndpoints({
   endpoints: (build) => ({
@@ -37,17 +36,16 @@ export const eventsApi = reactStoreApi.injectEndpoints({
       query: (id) => ({
         url: `events/${id}`,
       }),
+      transformResponse: (result) => EventModelSchema.parseAsync(result),
     }),
     createEvent: build.mutation<EventModel, Partial<EventModel>>({
       invalidatesTags: [EventTag],
       query: (args) => ({
         url: 'events',
-        body: {
-          ...args,
-          date: args.date ? args.date.toISOString() : args.date,
-        },
+        body: args,
         method: 'POST',
       }),
+      transformResponse: (result) => EventModelSchema.parseAsync(result),
     }),
     updateEvent: build.mutation<
       void,
@@ -57,10 +55,7 @@ export const eventsApi = reactStoreApi.injectEndpoints({
         error ? [] : [{ type: EventTag, id: arg.id }, EventTag],
       query: (args) => ({
         url: `events/${args.id}`,
-        body: {
-          ...args,
-          date: args.date ? args.date.toISOString() : args.date,
-        },
+        body: args,
         method: 'PUT',
       }),
     }),

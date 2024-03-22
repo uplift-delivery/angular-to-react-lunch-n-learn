@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { TextInput, TextInputProps } from 'react-native-paper';
 import {
   Controller,
@@ -11,7 +10,7 @@ export type NativeTextInputProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > = Omit<ControllerProps<TFieldValues, TName>, 'render'> & {
-  label?: TextInputProps['label'];
+  label: TextInputProps['label'];
 };
 
 export function NativeTextInput<
@@ -28,6 +27,7 @@ export function NativeTextInput<
           onBlur={field.onBlur}
           value={field.value}
           label={props.label}
+          accessibilityLabel={props.name}
           error={fieldState.invalid}
         />
       )}

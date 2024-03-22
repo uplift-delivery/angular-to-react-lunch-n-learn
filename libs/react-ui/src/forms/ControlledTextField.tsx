@@ -11,6 +11,7 @@ export type ControlledTextFieldProps<
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > = Omit<ControllerProps<TFieldValues, TName>, 'render'> & {
   label?: TextFieldProps['label'];
+  autoFocus?: boolean;
 };
 
 export function ControlledTextField<

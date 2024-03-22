@@ -10,6 +10,7 @@ import { WelcomePage } from './welcome/WelcomePage';
 import { AppRouting } from './app-routing';
 import { useCallback, useMemo, useState } from 'react';
 import { EventDetailsPage } from './events/EventDetailsPage';
+import { BasicsPage } from './basics/BasicsPage';
 
 export function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -22,8 +23,8 @@ export function App() {
     [setIsDrawerOpen]
   );
   const drawerLinks = useMemo(
-    () => createDrawerLinksFromRouting(AppRouting),
-    []
+    () => createDrawerLinksFromRouting(AppRouting, { onClick: closeDrawer }),
+    [closeDrawer]
   );
 
   return (
@@ -34,6 +35,7 @@ export function App() {
       </AppDrawer>
 
       <Routes>
+        <Route path={AppRouting.basics.route} element={<BasicsPage />} />
         <Route path={AppRouting.events.route} element={<EventsPage />} />
         <Route
           path={AppRouting.eventDetail.route}

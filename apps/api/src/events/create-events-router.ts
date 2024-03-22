@@ -12,6 +12,10 @@ export function createEventsRouter() {
     const events = await repository.find({
       skip: (pageNumber - 1) * pageSize,
       take: pageSize,
+      order: {
+        name: 'ASC',
+        date: 'DESC',
+      },
     });
 
     res

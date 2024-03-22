@@ -1,15 +1,25 @@
-import { FC, PropsWithChildren } from 'react';
+import { ComponentType, FC, PropsWithChildren, useMemo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, ButtonProps, styled } from '@mui/material';
 
 export type AppDrawerLinkProps = PropsWithChildren & {
+  onClick?: () => void;
   to: string;
 };
 
-export const AppDrawerLink: FC<AppDrawerLinkProps> = ({ children, to }) => {
+const DrawerButton = styled(Button)({
+  justifyContent: 'flex-start',
+  paddingLeft: '1em',
+}) as ComponentType<ButtonProps & { to: string }>;
+
+export const AppDrawerLink: FC<AppDrawerLinkProps> = ({
+  children,
+  to,
+  onClick,
+}) => {
   return (
-    <Button component={RouterLink} to={to}>
+    <DrawerButton fullWidth component={RouterLink} to={to} onClick={onClick}>
       {children}
-    </Button>
+    </DrawerButton>
   );
 };

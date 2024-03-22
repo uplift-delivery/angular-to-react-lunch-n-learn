@@ -1,6 +1,11 @@
 import { EventModel } from '@uplift-lunch-n-learn/models';
 
 export const AppRouting = {
+  basics: {
+    route: '/basics',
+    text: 'Basics',
+    includeInDrawer: true,
+  },
   events: {
     route: '/events',
     text: 'Events',
