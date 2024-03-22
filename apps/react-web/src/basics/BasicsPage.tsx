@@ -4,11 +4,11 @@ import { Typography } from '@mui/material';
 
 export const BasicsPage: FC = () => {
   // Use State
-  // - Simple boolean with Switch
+  // - Simple int with counter input
   // - Save settings in state
 
   // Use Memo
-  // - Show object being created each time with a useEffect
+  // - Show calculated value
 
   // Use Effect
   // - Load settings using effect
@@ -26,6 +26,7 @@ export const BasicsPage: FC = () => {
   return (
     <ColumnFlexbox>
       <Typography variant={'h3'}>React Basics</Typography>
+      <Typography variant={'h4'}>Please Ask Questions</Typography>
     </ColumnFlexbox>
   );
 };

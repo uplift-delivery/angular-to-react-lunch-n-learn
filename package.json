@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky && nx run-many -t pod-install",
     "start:metro": "nx start presenter-native",
     "start:ios": "nx pod-install presenter-native && nx run-ios presenter-native",
     "start:android": "nx run-android presenter-native",
