@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { ColumnFlexbox } from '@uplift-lunch-n-learn/react-ui';
-import { Switch, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 export const BasicsPage: FC = () => {
   // Use State
