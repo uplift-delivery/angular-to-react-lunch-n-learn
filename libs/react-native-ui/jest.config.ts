@@ -18,7 +18,7 @@ module.exports = {
     ),
   },
   transformIgnorePatterns: [
-    '../../node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation|@babel)',
+    '../../node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
   ],
   coverageDirectory: '../../coverage/libs/react-native-ui',
 };
