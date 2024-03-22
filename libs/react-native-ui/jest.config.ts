@@ -21,4 +21,5 @@ module.exports = {
     '../../node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
   ],
   coverageDirectory: '../../coverage/libs/react-native-ui',
+  passWithNoTests: true,
 };

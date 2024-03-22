@@ -15,13 +15,6 @@ module.exports = function (api) {
     env: {
       test: {
         presets: [
-          [
-            '@nx/react/babel',
-            {
-              runtime: 'automatic',
-              useBuiltIns: 'usage',
-            },
-          ],
           ['module:@react-native/babel-preset', { useTransformReactJSX: true }],
         ],
       },
