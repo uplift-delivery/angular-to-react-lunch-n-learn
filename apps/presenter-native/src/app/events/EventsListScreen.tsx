@@ -13,6 +13,7 @@ import {
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParams } from '../root-stack-params';
 import { EventModel } from '@uplift-lunch-n-learn/models';
+import { EmptyEventList } from './EmptyEventList';
 
 export const EventsListScreen: FC<NativeStackScreenProps<RootStackParams>> = ({
   navigation,
@@ -42,6 +43,7 @@ export const EventsListScreen: FC<NativeStackScreenProps<RootStackParams>> = ({
         onLoadMore={handleLoadMore}
         onSelect={handleSelectedEvent}
       />
+      {!isLoading && events.length === 0 && <EmptyEventList />}
       {isLoading && <NativeLoadingIndicator />}
       {isError && (
         <NativeErrorMessage>Failed to load events</NativeErrorMessage>

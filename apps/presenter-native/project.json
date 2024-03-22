@@ -3,6 +3,16 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/presenter-native/src",
   "projectType": "application",
-  "targets": {},
+  "targets": {
+    "patch-ios-incremental-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "touch apps/presenter-native/ios/.xcode.env"
+      }
+    },
+    "run-ios": {
+      "dependsOn": ["patch-ios-incremental-build"]
+    }
+  },
   "tags": []
 }

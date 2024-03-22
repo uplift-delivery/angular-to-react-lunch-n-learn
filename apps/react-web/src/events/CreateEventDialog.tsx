@@ -43,6 +43,7 @@ export const CreateEventDialog: FC<CreateEventDialogProps> = ({
     <FormDialog
       onClose={closeHandler}
       onSubmit={handleSubmit(submitHandler)}
+      autoFocus
       {...props}
     >
       <CustomDialogTitle>Create New Event</CustomDialogTitle>

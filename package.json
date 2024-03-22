@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "prepare": "husky && nx run-many -t pod-install",
-    "start:metro": "nx start presenter-native",
+    "start:metro": "nx start presenter-native --reset-cache",
     "start:ios": "nx pod-install presenter-native && nx run-ios presenter-native",
     "start:android": "nx run-android presenter-native",
     "start:react": "nx serve react-web",
