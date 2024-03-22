@@ -5,6 +5,7 @@ import {
   FieldValues,
 } from 'react-hook-form';
 import { DatePicker, DatePickerProps } from '@mui/x-date-pickers';
+import { formatISO } from 'date-fns';
 
 export type ControlledDatePickerProps<
   TFieldValues extends FieldValues = FieldValues,
@@ -24,6 +25,9 @@ export function ControlledDatePicker<
         <DatePicker
           slotProps={{ textField: { error: fieldState.invalid } }}
           {...field}
+          onChange={(dateValue) => {
+            field.onChange(formatISO(dateValue as Date));
+          }}
           label={props.label}
         />
       )}

@@ -6,6 +6,7 @@ import {
   pagedQueryToParams,
 } from '@uplift-lunch-n-learn/models';
 import { EventTag } from '../api-tags';
+import { format, parseISO } from 'date-fns';
 
 export const eventsApi = reactStoreApi.injectEndpoints({
   endpoints: (build) => ({
@@ -36,7 +37,12 @@ export const eventsApi = reactStoreApi.injectEndpoints({
       invalidatesTags: [EventTag],
       query: (args) => ({
         url: 'events',
-        body: args,
+        body: {
+          ...args,
+          date: args.date
+            ? format(parseISO(args.date), 'MM/dd/yyyy')
+            : args.date,
+        },
         method: 'POST',
       }),
     }),
@@ -48,7 +54,12 @@ export const eventsApi = reactStoreApi.injectEndpoints({
         error ? [] : [{ type: EventTag, id: arg.id }, EventTag],
       query: (args) => ({
         url: `events/${args.id}`,
-        body: args,
+        body: {
+          ...args,
+          date: args.date
+            ? format(parseISO(args.date), 'MM/dd/yyyy')
+            : args.date,
+        },
         method: 'PUT',
       }),
     }),

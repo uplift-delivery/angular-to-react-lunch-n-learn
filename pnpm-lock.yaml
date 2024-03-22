@@ -316,6 +316,9 @@ devDependencies:
   babel-jest:
     specifier: ^29.4.1
     version: 29.7.0(@babel/core@7.24.0)
+  cockatiel:
+    specifier: ^3.1.2
+    version: 3.1.2
   concurrently:
     specifier: ^8.2.2
     version: 8.2.2
@@ -10181,6 +10184,11 @@ packages:
   /co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
     engines: {iojs: '>= 1.0.0', node: '>= 0.12.0'}
+    dev: true
+
+  /cockatiel@3.1.2:
+    resolution: {integrity: sha512-5yARKww0dWyWg2/3xZeXgoxjHLwpVqFptj9Zy7qioJ6+/L0ARM184sgMUrQDjxw7ePJWlGhV998mKhzrxT0/Kg==}
+    engines: {node: '>=16'}
     dev: true
 
   /code-block-writer@12.0.0:
