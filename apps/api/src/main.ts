@@ -7,12 +7,14 @@ import { createEventsRouter } from './events/create-events-router';
 import { loggerMiddleware } from './shared/logger-middleware';
 import { logger } from './shared/logger';
 import { createHealthRouter } from './health/create-health-router';
+import { delayMiddleware } from './shared/delay-middleware';
 
 const app = express();
 const port = process.env.PORT || 5001;
 
 logger.info('starting api', { port });
 app.use(loggerMiddleware());
+app.use(delayMiddleware());
 app.use(cors());
 app.use(bodyParser.json());
 app.use('/events', createEventsRouter());

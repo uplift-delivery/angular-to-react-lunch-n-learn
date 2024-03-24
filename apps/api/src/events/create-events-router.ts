@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { EventEntity } from './event-entity';
 import { parseQueryStringAsNumber } from '../shared/parse-query-string';
 import { eventsRepository } from './events-repository';
+import { delayRequest } from '../shared/delay-request';
 
 export function createEventsRouter() {
   const router = Router();
@@ -17,7 +18,6 @@ export function createEventsRouter() {
         date: 'DESC',
       },
     });
-
     res
       .status(200)
       .json({
