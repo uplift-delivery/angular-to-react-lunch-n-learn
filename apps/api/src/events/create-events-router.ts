@@ -9,7 +9,7 @@ export function createEventsRouter() {
     const pageSize = parseQueryStringAsNumber('pageSize', req) ?? 10;
     const pageNumber = parseQueryStringAsNumber('pageNumber', req) ?? 1;
     const repository = await eventsRepository();
-    const events = await repository.find({
+    const [events, totalCount] = await repository.findAndCount({
       skip: (pageNumber - 1) * pageSize,
       take: pageSize,
       order: {
@@ -22,6 +22,7 @@ export function createEventsRouter() {
       .json({
         pageNumber,
         pageSize,
+        totalCount,
         items: events,
       })
       .end();

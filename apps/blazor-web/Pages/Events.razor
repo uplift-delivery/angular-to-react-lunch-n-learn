@@ -1,0 +1,78 @@
+@using UpliftLunchNLearn.BlazorWeb.BlazorWeb.Events
+@using UpliftLunchNLearn.BlazorWeb.BlazorWeb.Events.Models
+@using UpliftLunchNLearn.BlazorWeb.BlazorWeb.Shared.Models
+
+@inject EventsClient EventsClient;
+@inject IDialogService DialogService;
+
+@page "/events"
+
+<MudPaper Class="mb-4">
+  <MudToolBar>
+    <MudButton Color="@Color.Primary" Variant="@Variant.Filled" OnClick="@OnCreateEvent">Create Event</MudButton>
+  </MudToolBar>
+</MudPaper>
+
+<MudTable @ref="@Table" ServerData="@LoadEvents">
+  <HeaderContent>
+    <MudTh>Name</MudTh>
+    <MudTh>Location</MudTh>
+    <MudTh>Date</MudTh>
+    <MudTh></MudTh>
+  </HeaderContent>
+  <RowTemplate>
+    <MudTd DataLabel="Name">
+      @context.Name
+    </MudTd>
+    <MudTd DataLabel="Location">
+      @context.Location
+    </MudTd>
+    <MudTd DataLabel="Date">
+      @context.Date.ToString("MM/dd/yyyy")
+    </MudTd>
+    <MudTd DataLabel="">
+      <MudIconButton Icon="@Icons.Material.Filled.Edit" OnClick="@(() => OnEditEvent(context))"/>
+    </MudTd>
+  </RowTemplate>
+  <PagerContent>
+    <MudTablePager/>
+  </PagerContent>
+</MudTable>
+
+@code {
+  private MudTable<EventModel>? Table { get; set; }
+
+  private async Task<TableData<EventModel>> LoadEvents(TableState state)
+  {
+    var pagedEvents = await EventsClient.GetEventsAsync(new PagedQuery(state.PageSize, state.Page));
+    return new TableData<EventModel>
+    {
+      Items = pagedEvents.Items,
+      TotalItems = pagedEvents.TotalCount
+    };
+  }
+
+  private async Task OnEditEvent(EventModel model)
+  {
+    var parameters = new DialogParameters<EditEventDialog>
+    {
+      { m => m.Model, model }
+    };
+
+    await DialogService.ShowAsync<EditEventDialog>("Edit Event", parameters: parameters);
+    if (Table != null)
+    {
+      await Table.ReloadServerData();
+    }
+  }
+
+  private async Task OnCreateEvent()
+  {
+    await DialogService.ShowAsync<CreateEventDialog>("Crate Event");
+    if (Table != null)
+    {
+      await Table.ReloadServerData();
+    }
+  }
+
+}

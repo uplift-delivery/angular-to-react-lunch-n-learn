@@ -1,0 +1,12 @@
+﻿<MudDrawer Open="@IsOpen">
+  <MudPaper>
+    <MudNavMenu>
+      <MudNavLink Href="/welcome">Welcome</MudNavLink>
+      <MudNavLink Href="/events">Events</MudNavLink>
+    </MudNavMenu>
+  </MudPaper>
+</MudDrawer>
+
+@code {
+  [Parameter] public bool IsOpen { get; set; }
+}

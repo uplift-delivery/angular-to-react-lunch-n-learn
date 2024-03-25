@@ -1,0 +1,59 @@
+@using UpliftLunchNLearn.BlazorWeb.BlazorWeb.Events.Models
+@inject EventsClient EventsClient;
+
+<EditForm Model="@FormData" OnValidSubmit="@OnSave">
+  <MudDialog>
+    <DialogContent>
+      <MudTextField @bind-Value="FormData.Name" Label="Name" For="() => FormData.Name"/>
+      <MudTextField @bind-Value="FormData.Location" Label="Location" For="() => FormData.Location"/>
+      <MudDatePicker @bind-Date="FormData.Date" Label="Date" For="() => FormData.Date"/>
+    </DialogContent>
+    <DialogActions>
+      <MudButton ButtonType="@ButtonType.Button" OnClick="@OnCancel">Cancel</MudButton>
+      <MudButton ButtonType="@ButtonType.Submit" Disabled="@IsSaving">
+          Save
+      </MudButton>
+    </DialogActions>
+  </MudDialog>
+</EditForm>
+
+@code {
+  [CascadingParameter] MudDialogInstance? DialogInstance { get; set; }
+  [Parameter] public EventModel? Model { get; set; }
+  private EventFormModel FormData { get; set; } = new();
+  private bool IsSaving { get; set; }
+
+  private void OnCancel()
+  {
+    DialogInstance?.Cancel();
+  }
+
+  private async Task OnSave()
+  {
+    if (Model == null)
+    {
+      return;
+    }
+
+    IsSaving = true;
+    StateHasChanged();
+
+    var updatedEvent = Model with
+    {
+      Date = FormData.Date.GetValueOrDefault(DateTime.Now),
+      Location = FormData.Location,
+      Name = FormData.Name
+    };
+    await EventsClient.UpdateEvent(updatedEvent);
+    DialogInstance?.Close();
+    IsSaving = false;
+    StateHasChanged();
+  }
+
+  protected override void OnParametersSet()
+  {
+    FormData = EventFormModel.FromModel(Model);
+    base.OnParametersSet();
+  }
+
+}

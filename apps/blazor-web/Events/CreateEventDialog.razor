@@ -1,0 +1,39 @@
+@using UpliftLunchNLearn.BlazorWeb.BlazorWeb.Events.Models
+@inject EventsClient EventsClient;
+
+<MudForm Model="FormData">
+  <MudDialog>
+    <DialogContent>
+      <MudTextField @bind-Value="FormData.Name" Label="Name" For="() => FormData.Name"/>
+      <MudTextField @bind-Value="FormData.Location" Label="Location" For="() => FormData.Location"/>
+      <MudDatePicker @bind-Date="FormData.Date" Label="Date" For="() => FormData.Date"/>
+    </DialogContent>
+    <DialogActions>
+      <MudButton ButtonType="@ButtonType.Button" OnClick="@OnCancel">Cancel</MudButton>
+      <MudButton ButtonType="@ButtonType.Submit" Disabled="@IsSaving" OnClick="@OnSave">Save</MudButton>
+    </DialogActions>
+  </MudDialog>
+</MudForm>
+
+@code {
+  [CascadingParameter] MudDialogInstance? DialogInstance { get; set; }
+  private bool IsSaving { get; set; }
+  public EventFormModel FormData { get; set; } = new();
+
+  private void OnCancel()
+  {
+    DialogInstance?.Cancel();
+  }
+
+  private async Task OnSave()
+  {
+    IsSaving = true;
+    StateHasChanged();
+
+    var model = new EventModel(Guid.Empty, FormData.Name, FormData.Location, FormData.Date.GetValueOrDefault(DateTime.Now));
+    var result = await EventsClient.CreateEvent(model);
+    DialogInstance?.Close(result);
+    IsSaving = false;
+    StateHasChanged();
+  }
+}

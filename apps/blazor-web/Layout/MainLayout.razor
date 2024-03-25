@@ -1,16 +1,47 @@
 ﻿@inherits LayoutComponentBase
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+@implements IDisposable
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
-        </div>
+@inject NavigationManager NavigationManager;
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider/>
+
+<MudLayout>
+  <MainAppBar OnMenuToggled="@HandleMenuToggled" />
+  <MainMenu IsOpen="@IsMenuOpen" />
+  <MainContent>
+    @Body
+  </MainContent>
+</MudLayout>
+
+@code {
+
+  private bool IsMenuOpen { get; set; }
+  private IDisposable? _locationChangeHandler = null;
+
+  protected override async Task OnInitializedAsync()
+  {
+    _locationChangeHandler = NavigationManager.RegisterLocationChangingHandler(HandleLocationChanging);
+    await base.OnInitializedAsync();
+  }
+
+  private void HandleMenuToggled()
+  {
+    IsMenuOpen = !IsMenuOpen;
+    StateHasChanged();
+  }
+
+  private ValueTask HandleLocationChanging(LocationChangingContext context)
+  {
+    IsMenuOpen = false;
+    StateHasChanged();
+    return ValueTask.CompletedTask;
+  }
+
+  public void Dispose()
+  {
+    _locationChangeHandler?.Dispose();
+  }
+
+}
