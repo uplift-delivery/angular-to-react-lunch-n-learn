@@ -3,23 +3,26 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/presenter-angular/src",
+  "sourceRoot": "apps/angular-web/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/presenter-angular",
-        "index": "apps/presenter-angular/src/index.html",
-        "main": "apps/presenter-angular/src/main.ts",
+        "outputPath": "dist/apps/angular-web",
+        "index": "apps/angular-web/src/index.html",
+        "main": "apps/angular-web/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/presenter-angular/tsconfig.app.json",
+        "tsConfig": "apps/angular-web/tsconfig.app.json",
         "assets": [
-          "apps/presenter-angular/src/favicon.ico",
-          "apps/presenter-angular/src/assets"
+          "apps/angular-web/src/favicon.ico",
+          "apps/angular-web/src/assets"
         ],
-        "styles": ["apps/presenter-angular/src/styles.css", "node_modules/material-icons/iconfont/material-icons.css"],
+        "styles": [
+          "apps/angular-web/src/styles.css",
+          "node_modules/material-icons/iconfont/material-icons.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -77,7 +80,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/presenter-angular/jest.config.ts"
+        "jestConfig": "apps/angular-web/jest.config.ts"
       }
     }
   }
