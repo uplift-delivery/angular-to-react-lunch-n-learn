@@ -1242,7 +1242,7 @@ SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   FBLazyVector: f64d1e2ea739b4d8f7e4740cde18089cd97fe864
-  FBReactNativeSpec: 10f7453c6751c01ac02049773791f2cb6a09e2f6
+  FBReactNativeSpec: 437bd5ea06af2ed5d39022b3006cad0b2cea73e4
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: 9cecf9953a681df7556b8cc9c74905de8f3293c0
@@ -1284,7 +1284,7 @@ SPEC CHECKSUMS:
   React-RCTText: 4119d9e53ca5db9502b916e1b146e99798986d21
   React-RCTVibration: 55bd7c48487eb9a2562f2bd3fdc833274f5b0636
   React-rendererdebug: 5fa97ba664806cee4700e95aec42dff1b6f8ea36
-  React-rncore: 771b610888f28af84391f2c69c6351ed035fdec9
+  React-rncore: 79048bf24d4bedcc9007337aba74da3659b14b38
   React-runtimeexecutor: bb328dbe2865f3a550df0240df8e2d8c3aaa4c57
   React-runtimescheduler: 9636eee762c699ca7c85751a359101797e4c8b3b
   React-utils: d16c1d2251c088ad817996621947d0ac8167b46c

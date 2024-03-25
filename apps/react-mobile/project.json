@@ -1,13 +1,13 @@
 {
   "name": "presenter-native",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/presenter-native/src",
+  "sourceRoot": "apps/react-mobile/src",
   "projectType": "application",
   "targets": {
     "patch-ios-incremental-build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "touch apps/presenter-native/ios/.xcode.env"
+        "command": "touch apps/react-mobile/ios/.xcode.env"
       }
     },
     "run-ios": {

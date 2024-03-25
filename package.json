@@ -5,9 +5,9 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "start:metro": "nx start presenter-native --reset-cache",
-    "start:ios": "nx pod-install presenter-native && nx run-ios presenter-native",
-    "start:android": "nx run-android presenter-native",
+    "start:metro": "nx start react-mobile --reset-cache",
+    "start:ios": "nx pod-install react-mobile && nx run-ios react-mobile",
+    "start:android": "nx run-android react-mobile",
     "start:react": "nx serve react-web",
     "wait:react": "wait-on http-get://localhost:4200",
     "start:api": "nx serve api",

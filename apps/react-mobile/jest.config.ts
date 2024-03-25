@@ -20,5 +20,5 @@ module.exports = {
   transformIgnorePatterns: [
     '../../node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)',
   ],
-  coverageDirectory: '../../coverage/apps/presenter-native',
+  coverageDirectory: '../../coverage/apps/react-mobile',
 };
