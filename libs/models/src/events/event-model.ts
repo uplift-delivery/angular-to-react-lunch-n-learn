@@ -13,4 +13,10 @@ export const EventModelSchema = z.object({
   }),
 });
 
+export const EventFormSchema = EventModelSchema.omit({
+  id: true,
+});
+
+export type EventFormFields = z.infer<typeof EventFormSchema>;
+
 export type EventModel = z.infer<typeof EventModelSchema>;
