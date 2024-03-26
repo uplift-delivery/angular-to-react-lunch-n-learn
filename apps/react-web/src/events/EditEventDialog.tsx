@@ -8,8 +8,8 @@ import {
   ControlledDatePicker,
   FormDialogContent,
 } from '@uplift-lunch-n-learn/react-ui';
-import { EventModel } from '@uplift-lunch-n-learn/models';
-import { EventFormFields, useEventForm } from './EventSchema';
+import { EventFormFields, EventModel } from '@uplift-lunch-n-learn/models';
+import { useEventForm } from './event-form-hooks';
 import { useUpdateEventMutation } from '@uplift-lunch-n-learn/react-store';
 
 export type EditEventDialogProps = Omit<

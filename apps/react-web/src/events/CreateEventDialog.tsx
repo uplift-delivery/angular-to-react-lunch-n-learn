@@ -8,8 +8,10 @@ import {
   FormDialogProps,
   SaveDialogActions,
 } from '@uplift-lunch-n-learn/react-ui';
-import { EventFormFields, useEventForm } from './EventSchema';
+
 import { useCreateEventMutation } from '@uplift-lunch-n-learn/react-store';
+import { useEventForm } from './event-form-hooks';
+import { EventFormFields } from '@uplift-lunch-n-learn/models';
 
 export type CreateEventDialogProps = Omit<
   FormDialogProps,
